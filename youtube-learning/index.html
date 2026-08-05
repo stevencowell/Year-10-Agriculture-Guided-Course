@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Validated YouTube learning clips for Year 10 Agriculture, grouped by the authorised 2026 course topics.">
+  <title>YouTube learning | Year 10 Agriculture</title>
+  <link rel="stylesheet" href="../shared/sister-site.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#video-library">Skip to video library</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="../index.html">Year 10 Agriculture</a>
+      <nav class="nav-links" aria-label="Course navigation">
+        <a href="../index.html#pathway">Modules</a>
+        <a href="../plans/index.html">Plans and drawings</a>
+        <a href="../busy-work/index.html">Busy Work</a>
+        <a href="index.html" aria-current="page">YouTube learning</a>
+        <a href="../assessment/index.html">Assessment</a>
+        <a href="../folio.html">Folio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="video-library">
+    <section class="video-hero">
+      <div class="video-hero-inner">
+        <p class="eyebrow">17 directly validated clips</p>
+        <h1>Watch with a purpose</h1>
+        <p>Choose a clip, read its <strong>Watch for</strong> prompt, then return to the adjacent module. Videos load from YouTube only after you press Play.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#topics">Browse clips</a>
+          <a class="btn secondary" href="../index.html">Course home</a>
+        </div>
+        <p class="validation-note" id="validation-note">Loading current manifest…</p>
+      </div>
+    </section>
+
+    <section class="section" id="topics" aria-labelledby="topics-title">
+      <p class="eyebrow">Authorised 2026 sequence</p>
+      <h2 id="topics-title">Four course topics</h2>
+      <div class="topic-nav" id="topic-nav" aria-label="Video topic filters"></div>
+      <div id="video-groups" aria-live="polite"></div>
+      <noscript><p class="load-error">JavaScript is required for the filtered clip cards. Every clip remains available through the manifest file.</p></noscript>
+    </section>
+  </main>
+
+  <div class="video-dialog" id="video-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" hidden>
+    <div class="video-dialog-panel">
+      <div class="dialog-heading">
+        <div><p class="eyebrow" id="dialog-topic"></p><h2 id="dialog-title"></h2></div>
+        <button class="dialog-close" id="dialog-close" type="button" aria-label="Close video">Close <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="player-wrap" id="player-wrap"></div>
+      <p id="dialog-purpose"></p>
+      <div class="dialog-actions">
+        <a class="btn" id="dialog-youtube" href="#" target="_blank" rel="noopener">Open in YouTube</a>
+        <a class="btn secondary" id="dialog-module" href="#">Open adjacent module</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>Year 10 Agriculture YouTube learning · Direct links remain available if embedded playback is blocked.</footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
