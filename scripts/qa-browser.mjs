@@ -46,7 +46,7 @@ async function checkViewport(label, viewport) {
 
   await inspectPage(page, label, "index.html");
   must(await page.locator('.module-card:has(a[href^="module.html"])').count() === 20, `${label}: landing page must show 20 modules`);
-  must(await page.getByText(/broader plan remains teacher-controlled/i).count() > 0, `${label}: the broader plan authority boundary is missing`);
+  must(await page.getByRole("link", { name: "Teacher Resources" }).count() > 0, `${label}: Teacher Resources link is missing`);
   for (const destination of ["Plans and drawings", "Busy Work", "YouTube learning", "Assessment", "Folio"]) {
     must(await page.getByRole("link", { name: new RegExp(destination, "i") }).count() > 0, `${label}: landing page omits ${destination}`);
   }

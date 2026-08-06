@@ -45,4 +45,16 @@
     teacherResources.dataset.teacherResourcesLink = "";
     primaryNavigation.append(teacherResources);
   }
+
+  if (!location.pathname.includes("/teacher-resources")) {
+    document.querySelector("#outcomes")?.remove();
+    document.querySelectorAll("[data-outcomes]").forEach((element) => element.removeAttribute("data-outcomes"));
+    const teacherOnly = /(?:teacher to confirm|source boundary|teacher-controlled|source conflicts|notification conflict|placeholder classroom|scheduled outcomes|\bAG5-\d+\b|exact calendar dates|outcome codes?)/i;
+    document.querySelectorAll(".card.pending").forEach((card) => {
+      if (teacherOnly.test(card.textContent)) card.remove();
+    });
+    document.querySelectorAll(".callout, .evidence-note, p, li, h2, h3, details").forEach((element) => {
+      if (teacherOnly.test(element.textContent)) element.remove();
+    });
+  }
 })();
