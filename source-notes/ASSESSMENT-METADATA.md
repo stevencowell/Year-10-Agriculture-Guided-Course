@@ -40,3 +40,12 @@ Total weighting: 100% (25% + 35% + 40%).
 6. All Google Classroom destinations remain `INSERT CODE`. **Teacher to confirm/provide private Classroom links and submission routes.**
 7. Google Forms exist for all three notifications. The Drive connector could list but not read them, so they were inspected read-only in the signed-in browser. Each is a published receipt-confirmation form containing the same three required prompts: first name, last name and “Did you receive your assessment task on Google Classroom?” (Yes/No). IDs: Task 1 `1N5yWwZaQS8wtfPPbl2EFzo6-BQZDIF5rSo7A9Nlho_g`; Task 2 `1WZxufYCI3czWo_PeVm8Cb_gYQvoZaeFjpYKtmw2JAHM`; Task 3 `1pNeZ1EiDtppDjjfQ-dANCmOY7xTgL0qwI1-Y1vfwntY`.
 8. Task 3 requires live sheep handling, electronic scales, an Excel spreadsheet, yards/gates, a halter and local low-stress/WHS practice. The task establishes these requirements but does not supply the local risk assessment, animal-welfare procedure, equipment instructions, supervision plan or adjustment plan. **Teacher to confirm/provide all local procedures before student-facing release.**
+
+## Current handbook check and digital examination
+
+- The current cohort handbook names Task 1 an `Examination` in Term 1 Week 9. The course assessment schedule and notification name it a `Topic Test` due Term 1 Week 10. The student site shows both and leaves the exact session `Teacher to confirm`.
+- Student route: `exam/index.html`.
+- Access password: teacher-confirmed `8142`; static client-side gating is ordinary classroom access control, not strong security.
+- Format: 15 multiple-choice items, 2 true/false items, 5 matching items and 5 written/data-response items; 40 marks total.
+- Behaviour: unique browser-local autosave, reload restoration, progress, relock, student details and Print / Save PDF.
+- Source boundary: metadata and structure come from the current handbook, course assessment schedule, Task 1 notification and Modules 1–5. The data-response dataset is visibly labelled fictional practice data. No public answer key or automatic marking is included.
