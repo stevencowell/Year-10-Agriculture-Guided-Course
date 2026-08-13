@@ -1,0 +1,17 @@
+/* Supporting destinations remain in navigation; keep the entry page to orientation and the real module path. */
+.hero-showcase figcaption,
+.landing-main > .section:first-child,
+.landing-main > .section:not(#pathway) {
+  display: none !important;
+}
+
+#pathway .module-link {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+}
+
+[data-module-grid] .module-card:last-child {
+  display: none !important;
+}
