@@ -4,6 +4,7 @@
   const HUB_URL = "https://stevencowell.github.io/Main-Page/";
   const script = document.currentScript;
   const stylesheetUrl = script ? new URL("sister-site.css", script.src).href : "";
+  const courseRoot = script ? new URL("../", script.src) : new URL("./", location.href);
 
   if (stylesheetUrl && !document.querySelector('link[data-sister-site-styles]')) {
     const stylesheet = document.createElement("link");
@@ -13,37 +14,48 @@
     document.head.append(stylesheet);
   }
 
-  if (document.querySelector(".hub-return-bar")) return;
+  if (!document.querySelector(".course-family-nav")) {
+    const path = location.pathname.toLowerCase();
+    const rootPath = courseRoot.pathname.replace(/\/$/, "").toLowerCase();
+    const isCourseHome = path === `${rootPath}/` || path === `${rootPath}/index.html`;
+    const bar = document.createElement("nav");
+    bar.className = "course-family-nav screen-only";
+    bar.setAttribute("aria-label", "Year 10 Agriculture course navigation");
 
-  const heading = document.querySelector("h1");
-  const courseLabel = heading && heading.textContent.trim() ? heading.textContent.trim() : document.title;
-  const bar = document.createElement("nav");
-  bar.className = "hub-return-bar screen-only";
-  bar.setAttribute("aria-label", "Industrial Arts Learning Hub navigation");
+    const inner = document.createElement("div");
+    inner.className = "course-family-nav__inner";
 
-  const inner = document.createElement("div");
-  inner.className = "hub-return-inner";
+    const brand = document.createElement("a");
+    brand.className = "course-family-nav__brand";
+    brand.href = new URL("index.html", courseRoot).href;
+    brand.innerHTML = '<span class="course-family-nav__mark" aria-hidden="true">10A</span><span>Year 10 Agriculture</span>';
 
-  const link = document.createElement("a");
-  link.className = "hub-return-link";
-  link.href = HUB_URL;
-  link.innerHTML = '<span aria-hidden="true">←</span><span>Main menu · Industrial Arts Learning Hub</span>';
+    const links = document.createElement("div");
+    links.className = "course-family-nav__links";
+    const items = [
+      { label: "Course", href: "index.html", current: isCourseHome },
+      { label: "Modules", href: "index.html#pathway", current: path.endsWith("/module.html") },
+      { label: "Video learning", href: "youtube-learning/index.html", current: path.includes("/youtube-learning/") },
+      { label: "Busy Work", href: "busy-work/index.html", current: path.includes("/busy-work/") },
+      { label: "My folio", href: "folio.html", current: path.endsWith("/folio.html") },
+      { label: "Plans", href: "plans/index.html", current: path.includes("/plans/") },
+      { label: "Assessment", href: "assessment/index.html", current: path.includes("/assessment/") },
+      { label: "Teacher resources", href: "teacher-resources/", current: path.includes("/teacher-resources/") },
+      { label: "Main Menu", href: HUB_URL, external: true }
+    ];
 
-  const label = document.createElement("span");
-  label.className = "hub-course-label";
-  label.textContent = courseLabel;
+    items.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = item.external ? item.href : new URL(item.href, courseRoot).href;
+      link.textContent = item.label;
+      if (item.current) link.setAttribute("aria-current", "page");
+      links.append(link);
+    });
 
-  inner.append(link, label);
-  bar.append(inner);
-  document.body.prepend(bar);
-
-  const primaryNavigation = document.querySelector(".nav-links");
-  if (primaryNavigation && !primaryNavigation.querySelector('[data-teacher-resources-link]')) {
-    const teacherResources = document.createElement("a");
-    teacherResources.href = "https://stevencowell.github.io/Year-10-Agriculture-Guided-Course/teacher-resources/";
-    teacherResources.textContent = "Teacher Resources";
-    teacherResources.dataset.teacherResourcesLink = "";
-    primaryNavigation.append(teacherResources);
+    inner.append(brand, links);
+    bar.append(inner);
+    document.body.prepend(bar);
+    document.documentElement.classList.add("has-course-family-nav");
   }
 
   if (!location.pathname.includes("/teacher-resources")) {
