@@ -1,5 +1,6 @@
 /* Supporting destinations remain in navigation; keep the entry page to orientation and the real module path. */
 .hero-showcase figcaption,
+.infographic-open-label,
 .landing-main > .section:first-child,
 .landing-main > .section:not(#pathway) {
   display: none !important;
